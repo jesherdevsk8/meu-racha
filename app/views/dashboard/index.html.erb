@@ -1,0 +1,9 @@
+<h1>Dashboard#index</h1>
+<p>Bem-vindo ao painel de controle!</p>
+<% if current_user %>
+  <p>
+    Olá <%= current_user.email %>
+  </p>
+<% end %>
+<%#= @users.inspect %>
+<%= render partial: 'shared/links' %>
