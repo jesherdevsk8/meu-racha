@@ -1,4 +1,4 @@
-alterar banco de dados para postgres
+configurar mailcatcher
 configurar variaveis de ambiente
 salvar um backup das variaveis de ambiente
 configurar credenciais (tentar ver uma forma de conectar com banco de dados em produção, através da credenciais)

@@ -1,29 +1,29 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
+
+local_default: &local_default
+  <<: *default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "postgres") %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+
+environment_default: &environment_default
+  <<: *default
+  username: <%= Rails.application.credentials.databases.to_h.dig(:rachao, :username) %>
+  password: <%= Rails.application.credentials.databases.to_h.dig(:rachao, :password) %>
+  host: <%= Rails.application.credentials.databases.to_h.dig(:rachao, :host) %>
 
 development:
-  <<: *default
-  database: db/development.sqlite3
-  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
-  # password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
-  # host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  <<: *local_default
+  database: rachao_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.sqlite3
+  <<: *local_default
+  database: rachao_test
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  <<: *environment_default
+  username: rachao
+  database: <%= Rails.application.credentials.databases.to_h.dig(:rachao, :database) %>
