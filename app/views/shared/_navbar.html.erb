@@ -1,0 +1,17 @@
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Meu Racha</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <%= link_to 'Jogadores', dashboard_players_path, method: :get, class: "nav-link active" %>
+      </li>
+    </ul>
+    <div class="d-flex">
+      <% unless user_signed_in? %>
+        <%= link_to 'Entrar', new_user_session_path, method: :get, class: "btn btn-dark" %>
+      <% else %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
