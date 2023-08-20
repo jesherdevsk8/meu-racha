@@ -72,3 +72,4 @@ gem "dotenv", "~> 2.8"
 gem "foreman", github: 'ddollar/foreman'
 gem 'pry'
 gem 'pry-byebug'
+gem 'rubocop', require: false
