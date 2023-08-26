@@ -1,4 +1,5 @@
 - colocar rspec
+- colocar validações nos models
 
 ---
 configurar credenciais (tentar ver uma forma de conectar com banco de dados em produção, através da credenciais)
