@@ -1,5 +1,6 @@
-- colocar rspec
-- colocar validações nos models
+- criar modelo de players
+- criar seeds de players
+- criar tela para criar partidas
 
 ---
 configurar credenciais (tentar ver uma forma de conectar com banco de dados em produção, através da credenciais)
