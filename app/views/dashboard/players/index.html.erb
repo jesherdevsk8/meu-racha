@@ -1,8 +1,26 @@
-<h1>Dashboard#index</h1>
-<p>Bem-vindo ao painel de controle!</p>
-<% if current_user %>
-  <p>
-    Olá <%= current_user.email %>
-  </p>
-  <%= @players.to_json %>
-<% end %>
+<div class="table-responsive table-responsive-sm">
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Apelido</th>
+        <th scope="col">Camisa</th>
+        <th scope="col">Situação</th>
+        <th scope="col">Gols</th>
+        <th scope="col">Posição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= player.name %></td>
+          <td><%= player.nickname %></td>
+          <td><%= player.shirt_number %></td>
+          <td><%= player.status %></td>
+          <td><%= player.score_goal %></td>
+          <td><%= player.position %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

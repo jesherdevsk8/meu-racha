@@ -18,6 +18,7 @@
 ## CRIAÇÃO DOS JOGADORES DE LINHA
 [
   { name: 'Ana Duarte', nickname: 'Ana', shirt_number: 11, status: 0, score_goal: 0, position: 1 },
+  { name: 'Michele', nickname: 'Michele', shirt_number: 20, status: 0, score_goal: 0, position: 1 },
   { name: 'Paulo Duarte', nickname: 'Paulinho', shirt_number: 8, status: 0, score_goal: 0, position: 1 },
   { name: 'Daniel Duarte', nickname: 'Daniel', shirt_number: 7, status: 0, score_goal: 0, position: 1 },
   { name: 'Devair Alberto', nickname: 'Devinha', shirt_number: 10, status: 0, score_goal: 0, position: 1 },
