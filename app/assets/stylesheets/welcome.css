@@ -1,0 +1,26 @@
+@font-face {
+  font-family: GreatVibes;
+  src: url('');
+}
+
+.greatVibesFont {
+  font-family : GreatVibes;
+}
+
+.navbar-brand img {
+  width:100%;
+  max-width:256px;
+  position:absolute;
+  transition:all 300ms linear;
+  transform-origin: 0% 0%;
+}
+
+@media screen and (max-width:956px){
+  img {
+    display: none;
+  }
+}
+
+img.consize {
+  transform : translateY(-20px) scale(0.25);
+}
