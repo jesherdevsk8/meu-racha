@@ -1,0 +1,6 @@
+{
+    "ruby.rubocop.configFilePath": ".rubocop.yml",
+    "ruby.rubocop.onSave": true,
+    "ruby.rubocop.executePath": "/home/arch/.rvm/gems/ruby-3.2.2/wrappers/",
+    "editor.tabSize": 2
+}
