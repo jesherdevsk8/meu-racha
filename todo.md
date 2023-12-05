@@ -1,7 +1,7 @@
 - criar views new edit and show to create update and edit players
-- criar controller e actions para tela de criação de partidas
+- criar controller e actions para tela de criação de partidas (rever modelagem de dados para partidas e jogadores)
 - melhorar layout da tela welcome index
-- adicionar função add_scopde no aplication_record
+- adicionar função add_scopde no aplication_record 
 - criar modulo que sorteia times e colocar em um botão
 - configurar whenever na aplicação
 
