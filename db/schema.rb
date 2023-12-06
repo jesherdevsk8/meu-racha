@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_004824) do
 
   create_table "players", force: :cascade do |t|
     t.string "name", null: false
-    t.string "nickname"
+    t.string "nickname", null: false
     t.integer "shirt_number"
     t.integer "status"
     t.integer "score_goal", default: 0

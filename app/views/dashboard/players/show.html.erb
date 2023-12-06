@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h1 class="text-center mb-0">Adicionar Jogador</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="player_name" class="form-label">Nome Completo</label>
+          <input type="text" id="player_name" class="form-control" value="<%= @player.name %>" disabled>
+        </div>
+        <div class="col-md-4">
+          <label for="player_name" class="form-label">Apelido</label>
+          <input type="text" id="nickname" class="form-control" value="<%= @player.nickname %>" disabled>
+        </div>
+        <div class="col-md-4">
+          <label for="shirt_number" class="form-label">Número da camiseta</label>
+          <input type="number" id="shirt_number" class="form-control" value="<%= @player.shirt_number %>" disabled>
+        </div>
+        <div class="col-md-4">
+          <label for="score_goal" class="form-label">Quantidade de Gols</label>
+          <input type="number" id="score_goal" class="form-control" value="<%= @player.score_goal %>" disabled>
+        </div>
+        <div class="col-md-6">
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="player_status">Titular</label>
+            <input type="checkbox" id="player_status" class="form-check-input" value="<%= @player.status ? 'checked' : '' %>" disabled readonly>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="player_position">Goleiro</label>
+            <input type="checkbox" id="player_position" class="form-check-input" value="<%= @player.position ? 'checked' : '' %>" disabled readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= link_to 'Editar', edit_dashboard_player_path(@player), class: 'btn btn-primary' %>
+  </div>
+</div>

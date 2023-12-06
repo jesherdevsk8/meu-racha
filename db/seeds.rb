@@ -13,7 +13,7 @@
     score_goal: player[:score_goal],
     position: player[:position]
   )
-  end
+end
 
 ## CRIAÇÃO DOS JOGADORES DE LINHA
 [
@@ -47,6 +47,6 @@
     score_goal: player[:score_goal],
     position: player[:position]
   )
-  end
+end
 
-  User.create!(name: 'Jesher Minelli', email: 'jesherdevsk8@gmail.com', 'senha@123')
+User.create!(name: 'Jesher Minelli', email: 'jesherdevsk8@gmail.com', password: 'senha@123')

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h1 class="text-center mb-0">Adicionar Jogador</h1>
+    </div>
+
+    <div class="card-body">
+      <%= form_with url: dashboard_players_path, method: :post, class: 'row g-3' do |form| %>
+        <div class="col-md-12">
+          <%= form.label :name, 'Nome Completo', class: 'form-label' %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="col-md-4">
+          <%= form.label :nickname, 'Apelido', class: 'form-label' %>
+          <%= form.text_field :nickname, class: 'form-control' %>
+        </div>
+        <div class="col-md-4">
+          <%= form.label :shirt_number, 'Número da camiseta', class: 'form-label' %>
+          <%= form.number_field :shirt_number, class: 'form-control' %>
+        </div>
+        <div class="col-md-4">
+          <%= form.label :score_goal, 'Quantidade de Gols', class: 'form-label' %>
+          <%= form.number_field :score_goal, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-check form-check-inline">
+            <%= form.label :status, 'Titular', class: 'form-check-label' %>
+            <%= form.check_box :status, class: 'form-check-input' %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= form.label :position, 'Goleiro', class: 'form-check-label' %>
+            <%= form.check_box :position, class: 'form-check-input' %>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <%= form.submit 'Create Player', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

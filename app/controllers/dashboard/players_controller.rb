@@ -2,16 +2,18 @@ class Dashboard::PlayersController < DashboardController
   before_action :set_player_match, only: %i[show edit update destroy]
 
   def index
-    @players = Player.where(status: 0).order(:name)
-    # render json: @players.as_json
+    @players = Player.titular.order(:name)
+    # binding.pry
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @players }
     end
   end
 
-  def show; end
+  def show
+    # binding.pry
+  end
 
   def new
     @player = Player.new
@@ -25,7 +27,7 @@ class Dashboard::PlayersController < DashboardController
     respond_to do |format|
       if @player.save
         format.html do
-          redirect_to dashboard_players_url(@player), notice: 'Player was successfully created.'
+          redirect_to dashboard_player_url(@player), notice: 'Player was successfully created.'
         end
         format.json { render :show, status: :created, location: @player }
       else
@@ -64,6 +66,11 @@ class Dashboard::PlayersController < DashboardController
 
   # Only allow a list of trusted parameters through.
   def player_params
-    params.fetch(:player, {})
+    permitted_params = params.permit(:name, :nickname, :shirt_number, :status, :score_goal, :position)
+
+    permitted_params[:status] = params[:status].to_i
+    permitted_params[:position] = params[:position].to_i
+
+    permitted_params
   end
 end

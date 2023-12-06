@@ -30,7 +30,7 @@ Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/LineLength:
-  Max: 130
+  Max: 110
   AllowedPatterns:
     - '^\s*describe\s.+\sdo$'
     - '^\s*it\s.+\sdo$'
