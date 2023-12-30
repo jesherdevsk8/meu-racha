@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class Dashboard::PlayersController < DashboardController
-  before_action :set_player_match, only: %i[show edit update destroy]
+  before_action :set_player, only: %i[show edit update destroy]
 
   def index
     @players = Player.titular.order(:name)
-    # binding.pry
 
     respond_to do |format|
       format.html
@@ -11,9 +12,7 @@ class Dashboard::PlayersController < DashboardController
     end
   end
 
-  def show
-    # binding.pry
-  end
+  def show; end
 
   def new
     @player = Player.new
@@ -40,7 +39,7 @@ class Dashboard::PlayersController < DashboardController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to player_url(@player), notice: 'Soccer match was successfully updated.' }
+        format.html { redirect_to dashboard_player_url(@player), notice: 'Soccer match was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,23 +52,24 @@ class Dashboard::PlayersController < DashboardController
     @player.destroy
 
     respond_to do |format|
-      format.html { redirect_to playeres_url, notice: 'Soccer match was successfully destroyed.' }
+      format.html { redirect_to players_url, notice: 'Soccer match was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
 
-  def set_player_match
+  def set_player
     @player = Player.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def player_params
-    permitted_params = params.permit(:name, :nickname, :shirt_number, :status, :score_goal, :position)
+    permitted_params = params.require(:player).permit(:name, :nickname, :shirt_number, :status, :score_goal,
+      :position)
 
-    permitted_params[:status] = params[:status].to_i
-    permitted_params[:position] = params[:position].to_i
+    permitted_params[:status] = params[:player][:status].to_i
+    permitted_params[:position] = params[:player][:position].to_i
 
     permitted_params
   end

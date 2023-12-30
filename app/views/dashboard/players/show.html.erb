@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header bg-primary text-white">
-      <h1 class="text-center mb-0">Adicionar Jogador</h1>
+      <h1 class="text-center mb-0">Jogador</h1>
     </div>
 
     <div class="card-body">
@@ -25,11 +25,11 @@
         <div class="col-md-6">
           <div class="form-check form-check-inline">
             <label class="form-check-label" for="player_status">Titular</label>
-            <input type="checkbox" id="player_status" class="form-check-input" value="<%= @player.status ? 'checked' : '' %>" disabled readonly>
+            <input type="checkbox" id="player_status" class="form-check-input" <%= @player.titular? ? 'checked' : '' %> disabled readonly>
           </div>
           <div class="form-check form-check-inline">
             <label class="form-check-label" for="player_position">Goleiro</label>
-            <input type="checkbox" id="player_position" class="form-check-input" value="<%= @player.position ? 'checked' : '' %>" disabled readonly>
+            <input type="checkbox" id="player_position" class="form-check-input" <%= @player.goleiro? ? 'checked' : '' %> disabled readonly>
           </div>
         </div>
       </div>
