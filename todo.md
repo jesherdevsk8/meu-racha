@@ -1,7 +1,7 @@
-- criar controller e actions para tela de criação de patidas
-- melhorar layout da tela welcome index
-- adicionar função add_scopde no aplication_record
-- criar modulo que sorteia times e colocar em um botão
+- Arrumar view edit para update players
+- criar controller e actions para tela de criação de partidas (rever modelagem de dados para partidas e jogadores)
+- adicionar função add_scope no aplication_record (talvez)
+- criar modulo que sorteia times e colocar em um botão    
 - configurar whenever na aplicação
 
 ---

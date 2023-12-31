@@ -4,7 +4,7 @@
       <div class="col-sm-6 text-black">
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), style: "width: 23rem;") do |f| %>
-            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+            <h3 class="fw-normal mb-3 pb-3" style="margin-top: 10px;letter-spacing: 1px;">Log in</h3>
             <div class="form-outline mb-4">
               <%= f.label :email %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>

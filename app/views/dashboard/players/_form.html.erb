@@ -1,0 +1,49 @@
+<div class="card-body">
+  <%= form_with model: [:dashboard, player], local: true, class: 'row g-3' do |form| %>
+    <% if player.errors.any? %>
+      <div style="color: red">
+        <h2>
+          <% error_count = player.errors.count %>
+          <%= pluralize(error_count, "Error#{error_count > 1 ? 's' : ''}") %> Please, Checkout!
+        </h2>
+
+        <ul>
+          <% player.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-md-12">
+      <%= form.label :name, 'Nome Completo', class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :nickname, 'Apelido', class: 'form-label' %>
+      <%= form.text_field :nickname, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :shirt_number, 'Número da camiseta', class: 'form-label' %>
+      <%= form.number_field :shirt_number, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :score_goal, 'Quantidade de Gols', class: 'form-label' %>
+      <%= form.number_field :score_goal, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <div class="form-check form-check-inline">
+        <%= form.label :status, 'Titular', class: 'form-check-label' %>
+        <%= form.check_box :status, class: 'form-check-input', checked: @player.titular? %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= form.label :position, 'Goleiro', class: 'form-check-label' %>
+        <%= form.check_box :position, class: 'form-check-input', checked: @player.goleiro? %>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <%= form.submit 'Enviar', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

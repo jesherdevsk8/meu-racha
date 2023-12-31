@@ -68,3 +68,4 @@ end
 gem 'devise', '~> 4.9'
 gem 'dotenv', '~> 2.8'
 gem 'foreman', github: 'ddollar/foreman'
+gem 'httparty'

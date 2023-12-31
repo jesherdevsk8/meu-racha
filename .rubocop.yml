@@ -1,3 +1,15 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2.2
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
 require:
   - rubocop-rails
   - rubocop-rspec
@@ -18,7 +30,7 @@ Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/LineLength:
-  Max: 130
+  Max: 110
   AllowedPatterns:
     - '^\s*describe\s.+\sdo$'
     - '^\s*it\s.+\sdo$'
@@ -70,6 +82,9 @@ Metrics/MethodLength:
   Exclude:
     - spec/**/*
 
+Metrics/CyclomaticComplexity:
+  Enabled: true
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -105,10 +120,6 @@ RSpec/ContextWording:
 
 Rails/TransactionExitStatement:
   Enabled: false
-
-AllCops:
-  NewCops: enable
-  SuggestExtensions: false
 
 Rails/ApplicationRecord:
   Enabled: false
