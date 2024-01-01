@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container main-container">
   <div class="card">
     <div class="card-header bg-primary text-white">
       <h1 class="text-center mb-0">Listagem de Jogadores</h1>
@@ -9,8 +9,8 @@
         <%= link_to 'Adicionar', new_dashboard_player_path, class: 'btn btn-primary' %>
 
         <div class="ms-auto">
-          <%= form_tag dashboard_players_path, method: :get, class: 'd-flex' do %>
-            <%= text_field_tag :search, params[:search], class: 'form-control me-2', placeholder: 'Search' %>
+          <%= form_tag dashboard_players_path, method: :get, class: 'd-flex', id: 'search-form' do %>
+            <%= text_field_tag :search, params[:search], class: 'form-control me-2', placeholder: 'Search', id: 'search-input' %>
             <%= submit_tag 'Search', class: 'btn btn-secondary' %>
           <% end %>
         </div>
@@ -56,3 +56,6 @@
     </div>
   </div>
 </div>
+
+<div id="results-container"></div>
+<%= javascript_include_tag "search" %>

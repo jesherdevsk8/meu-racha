@@ -2,12 +2,14 @@
 
 class Dashboard::PlayersController < DashboardController
   before_action :set_player, only: %i[show edit update destroy]
+  skip_before_action :verify_authenticity_token, only: [:index]
 
   def index
-    @players = Player.titular.order(:name)
+    @players = Player.titular.filter_by_name_or_nickname(permitted_params[:search]).order(:name)
 
     respond_to do |format|
       format.html
+      format.js
       format.json { render json: @players }
     end
   end
@@ -39,7 +41,9 @@ class Dashboard::PlayersController < DashboardController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to dashboard_player_url(@player), notice: 'Soccer match was successfully updated.' }
+        format.html do
+          redirect_to dashboard_player_url(@player), notice: 'Soccer match was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,14 +67,18 @@ class Dashboard::PlayersController < DashboardController
     @player = Player.find(params[:id])
   end
 
+  def permitted_params
+    params.permit(:search)
+  end
+
   # Only allow a list of trusted parameters through.
   def player_params
-    permitted_params = params.require(:player).permit(:name, :nickname, :shirt_number, :status, :score_goal,
+    params_permit = params.require(:player).permit(:name, :nickname, :shirt_number, :status, :score_goal,
       :position)
 
-    permitted_params[:status] = params[:player][:status].to_i
-    permitted_params[:position] = params[:player][:position].to_i
+    params_permit[:status] = params[:player][:status].to_i
+    params_permit[:position] = params[:player][:position].to_i
 
-    permitted_params
+    params_permit
   end
 end
