@@ -15,4 +15,8 @@ class Player < ApplicationRecord
 
   # Player.where(status: 1, position: 1).map(&:goleiro?)
   # Player.where(status: 0, position: 1).map(&:nickname)
+
+  scope :filter_by_name_or_nickname, lambda { |search|
+    where('name ILIKE :pattern OR nickname ILIKE :pattern', pattern: "%#{search}%") if search
+  }
 end
