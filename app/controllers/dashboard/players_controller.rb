@@ -4,7 +4,7 @@ class Dashboard::PlayersController < DashboardController
   before_action :set_player, only: %i[show edit update destroy]
 
   def index
-    @players = Player.titular.order(:name)
+    @players = Player.titular.filter_by_name_or_nickname(permitted_params[:search]).order(:name)
 
     respond_to do |format|
       format.html
@@ -61,6 +61,10 @@ class Dashboard::PlayersController < DashboardController
 
   def set_player
     @player = Player.find(params[:id])
+  end
+
+  def permitted_params
+    params.permit(:search)
   end
 
   # Only allow a list of trusted parameters through.
