@@ -1,7 +1,8 @@
-- Arrumar view edit para update players
+(Prioridade)
 - criar controller e actions para tela de criação de partidas (rever modelagem de dados para partidas e jogadores)
+- criar modulo que sorteia times e colocar em um botão em alguma view
+
 - adicionar função add_scope no aplication_record (talvez)
-- criar modulo que sorteia times e colocar em um botão    
 - configurar whenever na aplicação
 
 ---
