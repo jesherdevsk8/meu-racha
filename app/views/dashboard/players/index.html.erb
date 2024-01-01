@@ -5,20 +5,26 @@
     </div>
 
     <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <%= link_to 'Adicionar', new_dashboard_player_path, class: 'btn btn-primary' %>
-
-        <div class="ms-auto">
-          <%= form_tag dashboard_players_path, method: :get, class: 'd-flex' do %>
-            <%= text_field_tag :search, params[:search], class: 'form-control me-2', placeholder: 'Search' %>
-            <%= submit_tag 'Search', class: 'btn btn-secondary' %>
-          <% end %>
-        </div>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <%= link_to new_dashboard_player_path, class: 'btn btn-primary mb-2 mb-md-0' do %>
+          <i class="bi bi-person-plus-fill me-2"></i>
+          Adicionar Jogador
+        <% end %>
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered border-primary">
+        <table class="table table-hover table-bordered border-light", data-controller="search">
           <thead>
+            <tr>
+              <th class="text-center" colspan="7">
+                <div class="ms-auto">
+                  <%= text_field_tag(
+                    :search, params[:search], class: 'form-control', placeholder: 'Pesquisar por nome, apelido',
+                    autocomplete: 'off', id: 'search', size: 50, data: { action: "input->search#filterPlayers" }
+                  ) %>
+                </div>
+              </th>
+            </tr>
             <tr>
               <th class="text-center">##</th>
               <th scope="col">Nome</th>
@@ -35,15 +41,15 @@
                 <td class="text-center">
                   <div class="d-flex justify-content-around align-items-center">
                     <%= link_to dashboard_player_path(player), class: 'btn-link ' do %>
-                      <i class="bi bi-eye"></i>
+                      <i class="bi bi-eye-fill"></i>
                     <% end %>
                     <%= link_to edit_dashboard_player_path(player), class: 'btn-link' do %>
-                      <i class="bi bi-pencil"></i>
+                      <i class="bi bi-pencil-fill"></i>
                     <% end %>
                   </div>
                 </td>
-                <td><%= player.name %></td>
-                <td><%= player.nickname %></td>
+                <td data-search-target="name"><%= player.name %></td>
+                <td data-search-target="nickname"><%= player.nickname %></td>
                 <td><%= player.shirt_number %></td>
                 <td><%= player.status %></td>
                 <td><%= player.score_goal %></td>
